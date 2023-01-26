@@ -20,13 +20,16 @@ const CreatePost = () => {
 
     try {
       setLoading(true);
-      const response = await fetch("v1/posts", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-      });
+      const response = await fetch(
+        "https://dalle-d9wt.onrender.com/api/v1/posts",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(form),
+        }
+      );
       await response.json();
       navigate("/");
     } catch (error) {
@@ -52,13 +55,16 @@ const CreatePost = () => {
     if (form.prompt) {
       try {
         setGenerating(true);
-        const response = await fetch("v1/ai", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ prompt: form.prompt }),
-        });
+        const response = await fetch(
+          "https://dalle-d9wt.onrender.com/api/v1/ai",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ prompt: form.prompt }),
+          }
+        );
         const data = await response.json();
         setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
       } catch (error) {

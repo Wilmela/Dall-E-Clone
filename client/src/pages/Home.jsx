@@ -31,7 +31,7 @@ const Home = () => {
       setLoading(true);
       try {
         const response = await fetch(
-          "v1/posts/post",
+          "https://dalle-d9wt.onrender.com/api/v1/posts/post",
           {
             method: "GET",
             headers: { "Content-Type": "application/json" },

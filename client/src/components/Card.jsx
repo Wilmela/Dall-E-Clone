@@ -5,10 +5,13 @@ const Card = ({ _id, prompt, name, photo, loading, setLoading }) => {
   const deletePost = async (id) => {
     try {
       setLoading(true);
-      const response = await fetch(`v1/posts/${id}`, {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-      });
+      const response = await fetch(
+        `https://dalle-d9wt.onrender.com/api/v1/posts/${id}`,
+        {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
       if (response.ok) {
         window.location.reload();
       }
